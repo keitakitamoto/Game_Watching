@@ -20,7 +20,7 @@
  .イベント情報の確認>
 
 ## 設計書
-<...>
+<.未定..>
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1E4Quehglf9PxM1XTE-ft2X5-hJ5dmoJhsI-UJlgzVmY/edit#gid=0>
