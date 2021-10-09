@@ -30,5 +30,6 @@ Rails.application.routes.draw do
   scope module: :users do
     get 'about' => 'homes#about'
 
+
   end
 end
