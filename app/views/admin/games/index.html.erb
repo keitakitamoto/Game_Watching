@@ -1,0 +1,6 @@
+<h1>アプリゲーム一覧</h1>
+<% @game.each do |game| %>
+<%= attachment_image_tag,:image %>
+<%= link_to "詳細を見る", game_path(game.id),class :'btn btn-succsess' %>
+<% end %>
+<%= paginate @game %>

@@ -1,2 +1,10 @@
 <h1>とりあえずトップ</h1>
 <h2><%= link_to "マイページ",user_session_path %></h2>
+<% if user_signed_in? %>
+  <h3>User</h3>
+  <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+<% end %>
+<% if admin_signed_in? %>
+  <h3>Admin</h3>
+  <%= link_to 'logout', destroy_admin_session_path, method: :delete %>
+<% end %>

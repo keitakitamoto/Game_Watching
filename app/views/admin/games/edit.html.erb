@@ -1,0 +1,30 @@
+<h1>ゲーム編集</h1>
+<%= form_with model:[:admin,@game], local:true do |f| %>
+<div class = "game-photo_image">
+  <%= f.label :画像 %>
+  <%= f.attachment_image_field :image %>
+</div>
+<div class = "game-title-table">
+  <%= f.label :ゲームタイトル %>
+  <%= f.text_field :title, placeholder: 'タイトル' %> 
+</div>
+<div class = "genres-table">
+  <%= f.label :ジャンル %>
+</div>
+<div class = "PR-table">
+  <%= f.label :簡潔PR %>
+  <%= f.text_field :introduction, placeholder: 'PR' %>
+</div>
+<div class = "PR-table">
+  <%= f.label :紹介文 %>
+  <%= f.text_field :body, placeholder: '紹介文' %>
+</div>
+<div class = "bonus-table">
+  <%= f.label :特典 %>
+  <%= f.text_field :introduction, placeholder: '特典' %>
+</div>
+<div class = "center">
+  <%= f.submit :更新する,class :'btn btn-succsess' %>
+  <%= f.submit :削除する, method: :delete, class :'btn btn-danger' %>
+</div>
+<% end %>
