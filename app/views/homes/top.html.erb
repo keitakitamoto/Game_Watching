@@ -8,3 +8,8 @@
   <h3>Admin</h3>
   <%= link_to 'logout', destroy_admin_session_path, method: :delete %>
 <% end %>
+<div class = 'text_field center'>
+  <h4>無料会員登録でさまざまな特典をゲット！！</h4>
+</div>
+  <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-succsess' %>
+  <%= link_to "ログイン", new_user_session_path, class: 'btn btn-primary' %>

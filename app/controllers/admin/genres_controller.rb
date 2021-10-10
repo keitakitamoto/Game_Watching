@@ -7,7 +7,7 @@ class Admin::GenresController < ApplicationController
   end
   
   def create
-    @genre = @Genre.new(genre_params)
+    @genre = Genre.new(genre_params)
     if @genre.save
       redirect_to genres_path
     else
@@ -17,6 +17,7 @@ class Admin::GenresController < ApplicationController
   end
   
   def edit
+    @genre = Genre.find(params[:id])
   end
   
   def update
