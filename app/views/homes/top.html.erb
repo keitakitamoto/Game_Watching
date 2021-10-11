@@ -1,5 +1,6 @@
 <h1>とりあえずトップ</h1>
-<h2><%= link_to "マイページ",user_session_path %></h2>
+<h3><%= link_to "ホーム",root_path %></h3>
+<h3><%= link_to "マイページ",user_session_path %></h3>
 <% if user_signed_in? %>
   <h3>User</h3>
   <%= link_to 'logout', destroy_user_session_path, method: :delete %>
@@ -8,8 +9,18 @@
   <h3>Admin</h3>
   <%= link_to 'logout', destroy_admin_session_path, method: :delete %>
 <% end %>
+<table class = 'table'>
+  <h3>ランキング表示</h3>
+  <%= link_to ">>全てのゲームを見る" %>
+</table>
+<table class = 'table'>
+  <h3>ジャンル別で見る</h3>
+</table>
+<table class = 'table'>
+  <h3>新着アプリ</h3>
+</table>
 <div class = 'text_field center'>
   <h4>無料会員登録でさまざまな特典をゲット！！</h4>
 </div>
-  <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-succsess' %>
+  <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-success' %>
   <%= link_to "ログイン", new_user_session_path, class: 'btn btn-primary' %>

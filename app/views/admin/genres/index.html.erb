@@ -1,16 +1,16 @@
 <h1>ジャンル一覧・編集</h1>
   <div class = "genre_new_table">
-    <%= form_with model:@genre, local: true do |f| %>
+    <%= form_with model:[:admin, @genre], local: true do |f| %>
     <tr>
       <%= f.label :ジャンル名 %>
        <th><%= f.text_field :name, placeholder: 'ジャンル名' %></th>
-       <th><%= f.submit '新規登録',class: 'btn btn-succsess' %></th>
+       <th><%= f.submit '新規登録',class: 'btn btn-success' %></th>
     </tr>
   </div>
 
 <h2>ジャンル一覧</h2>
   <div class = "genre_index">
-    <% @genre.each do |genre| %>
+    <% @genres.each do |genre| %>
     <tr>
       <th><%= genre.name %></th>
       <th><%= link_to "編集する",edit_admin_game_path(genre),class: 'btn btn-primary' %></th>

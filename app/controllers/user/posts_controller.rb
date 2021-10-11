@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class User::PostsController < ApplicationController
   before_action :authenticate_user!, only: [:show, :create]
   def index
     @post = Post.all

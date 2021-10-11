@@ -14,7 +14,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :games
-    resources :genres, expect:[:new,:show]
+    resources :genres, expect:[:new, :show]
+    resources :users, only:[:show, :index]
   end
 
   # ユーザー側
@@ -26,11 +27,13 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :post_comments, only:[:create, :destroy]
     # resources :posts, only[:index, :show, :create]
-    # resources :users, only[:index, :show]
+    # resources :users, only[:index, :show] #いいね機能
+    
 
-  scope module: :users do
+  namespace :user do
     get 'about' => 'homes#about'
-
+    #resources :games, only:[:show,:index]
+    #resources :users, only:[:show,index]
 
   end
 end

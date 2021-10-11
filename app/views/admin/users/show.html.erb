@@ -1,0 +1,23 @@
+<h1><%= @user.name %>さんの会員情報</h1>
+<div class = "user_information" >
+  <table class = "table table-bordered">
+    <thead>
+     <tr>
+       <th>会員ID:</th>
+       <th>名前:</th>
+       <th>メールアドレス:</th>
+       <th>ステータス:</th>
+     </tr>
+    </thead>
+    <tbody>
+      <tr>
+       <% @user.each do |user| %>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%#= user.status %></td>
+       <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
