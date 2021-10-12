@@ -1,8 +1,10 @@
 <div class = "genre_edit">
-  <%= form_with model: @genre, local: true do |f| %>
-  <tr>
-    <th><%= f.label :name,'カテゴリー名' %></th>
-    <th><%= f.text_field :name, class:"form-control" %></th>
-    <th><%= f.submit '保存', class:"btn btn-success" %></th>
-  </tr>
+  <%= form_with model: [:admin, @genre], local: true do |f| %>
+    <tr>
+      <th><%= f.label :name,'カテゴリー名' %></th>
+      <th><%= f.text_field :name, class: "form-control" %></th>
+      <th><%= f.submit '更新する', class: "btn btn-success" %></th>
+      <th><%= f.submit '削除する', method: :delete, class: "btn btn-danger" %></th>
+    </tr>
+  <% end %>
 </div>

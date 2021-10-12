@@ -1,6 +1,6 @@
-class CreateUserPosts < ActiveRecord::Migration[5.2]
+class CreatePosts < ActiveRecord::Migration[5.2]
   def change
-    create_table :user_posts do |t|
+    create_table :posts do |t|
       t.string :content
       t.references :user, foreign_key: true
 

@@ -1,26 +1,27 @@
 <h1>ゲーム新規登録</h1>
-<%= form_with model:@game, local:true do |f| %>
+<%= form_with model: [:admin,@game], local:true do |f| %>
 <div class = "game-photo_image">
-  <%= f.label :画像 %>
-  <%#= f.attachment_image_field :image %>
+  <%= f.label :'画像:' %>
+  <%= f.attachment_field :image %>
 </div>
 <div class = "game-title-table">
-  <%= f.label :ゲームタイトル %>
+  <%= f.label :'ゲームタイトル:' %>
   <%= f.text_field :title, placeholder: 'タイトル' %>
 </div>
 <div class = "genres-table">
-  <%= f.label :ジャンル %>
+  <%= f.label :'ジャンル:' %>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "-- 選択してください --"  %>
 </div>
 <div class = "PR-table">
-  <%= f.label :ゲームについて %>
+  <%= f.label :'ゲームについて:' %>
   <%= f.text_field :introduction, placeholder: 'PR' %>
 </div>
 <div class = "PR-table">
-  <%= f.label :紹介文 %>
+  <%= f.label :'紹介文:' %>
   <%= f.text_area :body, placeholder: '紹介文' %>
 </div>
 <div class = "bonus-table">
-  <%= f.label :特典 %>
+  <%= f.label :'特典:' %>
   <%= f.text_area :introduction, placeholder: '特典' %>
 </div>
 <div class = "center">

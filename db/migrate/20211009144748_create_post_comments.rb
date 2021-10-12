@@ -1,6 +1,6 @@
-class CreatePostcomments < ActiveRecord::Migration[5.2]
+class CreatePostComments < ActiveRecord::Migration[5.2]
   def change
-    create_table :postcomments do |t|
+    create_table :post_comments do |t|
       t.text :comment
       t.integer :user_id
 

@@ -19,9 +19,9 @@ class Admin::GamesController < ApplicationController
   def create
     @game = Game.new(game_params)
     if @game.save
-      redirect_to game_path(@game)
+      redirect_to game_path(@game.id)
     else
-      render index
+      render :new
     end
   end
 
@@ -33,6 +33,6 @@ class Admin::GamesController < ApplicationController
 
   private
   def game_params
-    params_require(:game).permit(:name, :introduction, :genre_id)
+    params.require(:game).permit(:title, :introduction, :body, :image_id)
   end
 end
