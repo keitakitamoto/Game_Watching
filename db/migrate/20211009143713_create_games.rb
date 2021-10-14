@@ -4,7 +4,8 @@ class CreateGames < ActiveRecord::Migration[5.2]
       t.string :title, null: false
       t.text :introduction, null: false
       t.text :body, null: false
-      t.integer :image_id, null: false
+      t.string :image_id, null: false
+      t.integer :genre_id, null: false
       t.timestamps
     end
   end

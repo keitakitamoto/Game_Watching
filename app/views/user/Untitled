@@ -1,5 +1,0 @@
-<div class = "withdraw">
-<h1>本当に退会しますか？</h1>
-<%= link_to "yes" %>
-<%= link_to "No" %>
-</div>

@@ -1,0 +1,16 @@
+<h1>掲示板一覧</h1>
+<ul>
+  <table class = "table table-border">
+    <% @topics.each do |topic| %>
+      <li><%= link_to topic.title, user_topics_show_path(topic.id) %>
+          <%= link_to '[削除]', user_topic_delete_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %>
+      </li>
+    <% end %>  
+  </table>
+</ul>
+
+<h1>掲示板新規登録</h1>
+  <%= form_for @newTopic, :url => {:action => 'create'} do |f| %>
+    <%= f.text_field :title %>
+    <%= f.submit :新規作成 %>
+  <% end %>

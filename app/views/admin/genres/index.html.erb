@@ -1,10 +1,21 @@
 <h1>ジャンル一覧・編集</h1>
+<p><%= @genre.errors.inspect %></p>
+<% if @genre.errors.any? %>
+  <div class = "alert">
+    <ul>
+      <% @genre.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
   <div class = "genre_new_table">
     <%= form_with model:[:admin, @genre], local: true do |f| %>
     <tr>
       <%= f.label :ジャンル名 %>
-       <th><%= f.text_field :name, placeholder: 'ジャンル名' %></th>
-       <th><%= f.submit '新規登録',class: 'btn btn-success' %></th>
+       <th><%= f.text_field :name, autofocus: true,placeholder: 'ジャンル名' %></th>
+       <th><%= f.submit 'ジャンル新規登録', class: 'btn btn-success' %></th>
+       <th><%= link_to 'ゲーム新規登録', new_admin_game_path, class: 'btn btn-primary' %></th>
     </tr>
     <% end %>
   </div>

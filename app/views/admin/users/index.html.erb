@@ -16,8 +16,14 @@
         <td><%= user.id %></td>
         <td><%= user.name %></td>
         <td><%= user.email %></td>
-        <td><%#= user.status %></td>
-        <td><%= link_to "詳細を見る",admin_users_path(user), class: 'btn btn-success' %></td>
+        <td>
+          <% if user.is_valid? %>
+         <span class="text-secondary font-weight-bold">退会</span>
+          <% else %>
+         <span class="text-success font-weight-bold">有効</span>
+          <% end %>
+        </td>
+        <td><%= link_to "詳細を見る",admin_user_path(user), class: 'btn btn-success' %></td>
        <% end %>
       </tr>
     </tbody>

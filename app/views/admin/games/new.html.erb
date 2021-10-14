@@ -1,5 +1,5 @@
 <h1>ゲーム新規登録</h1>
-<%= form_with model: [:admin,@game], local:true do |f| %>
+<%= form_with url:admin_games_path, model:@game, local:true do |f| %>
 <div class = "game-photo_image">
   <%= f.label :'画像:' %>
   <%= f.attachment_field :image %>
@@ -22,7 +22,7 @@
 </div>
 <div class = "bonus-table">
   <%= f.label :'特典:' %>
-  <%= f.text_area :introduction, placeholder: '特典' %>
+  <%= f.text_area :bonus_index, placeholder: '特典' %>
 </div>
 <div class = "center">
   <%= f.submit '投稿する', class: 'btn btn-success' %>

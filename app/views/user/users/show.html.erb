@@ -1,0 +1,19 @@
+<h2>マイページ</h2>
+<table class = 'table'>
+  <thread>
+    <tbody>
+     <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg", size: "200x200"  %>
+  　  <h5>ニックネーム:<%= @user.name %></h5>
+      <h5>お気に入りアプリ:<%= @user.title %></h5>
+      <h5>いいね:<%#= @user.post_count %></h5>
+      <h5>フォロワー:<%#= @user.follower %></h5>
+      <h5>自己紹介:<%= @user.introduction %></h5>
+    </tbody>
+  </thread>
+  <table class = "table">
+   <% if user_signed_in? %>
+    <%= link_to "会員情報編集", edit_user_user_path(@user.id), class: 'btn btn-success' %>
+    <%= link_to "退会する", unsubscribe_user_users_path, class: 'btn btn-danger' %>
+   <% end %>
+  </table>
+</div>
