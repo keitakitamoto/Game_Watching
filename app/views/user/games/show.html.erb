@@ -1,0 +1,20 @@
+<div class = "container">
+ <div class = "row">
+   <h1>アプリ詳細</h1>
+    <div class = "table">
+     <tr>
+      <th><%= @game.title %></th>
+      <th><%= attachment_image_tag @game,:image %></th>
+      <th><%= @game.introduction %></th>
+      <th><%= @game.body %></th>
+     </tr>
+     <div class = "share-link">
+      <%= #link_to "ダウンロード", #download_path, get: :method, class: 'btn btn-primary' %>
+       共有
+       <p>評価:<%#= @game.reviews.count %>件</p>
+        <%#= render "users/average" %>
+        <%= link_to 'このゲームのレビューを閲覧する', user_game_reviews_path(@game.id), class: 'btn btn-success' %>
+     </div>
+    </div>
+ </div>
+</div>

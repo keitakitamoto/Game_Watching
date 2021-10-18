@@ -31,9 +31,6 @@ Rails.application.routes.draw do
         get :unsubscribe
         patch :withdraw
       end
-      # member do
-      #   get :hoge
-      # end
     end
     get 'about' => 'homes#about'
     #patch "users/withdraw" => "users#withdraw"
@@ -45,7 +42,11 @@ Rails.application.routes.draw do
 	  #新規書き込みのルーティング
 	  post 'post/create' => 'post#create', as: :post_create
 
-    #resources :games, only:[:show,:index]
-
+    resources :games, only:[:show, :index] do
+      resources :reviews, only:[:index, :create, :destroy] do
+        resource :likes, only:[:create, :destroy]
+      end
+      get 'download' => 'get#download'
+    end
   end
 end

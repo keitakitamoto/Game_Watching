@@ -1,0 +1,53 @@
+<div class = "container">
+ <div class = "row">
+   <!--<span>ii</span><span>ii</span>-->
+   <!--<div>aa</div><div>aa</div>-->
+   <div class = 'game-index'>
+    <h1>ゲームアプリ一覧</h1>
+     <tr>
+      <% @games.each do |game| %>
+       <th><%= attachment_image_tag game,:image %></th>
+       <td><%= game.title %></td>
+       <td><%= game.introduction %></td>
+       <td><%= link_to "開く", user_game_path(game.id), class: 'btn btn-success' %></td>
+      <% end %>
+     </tr>
+   </div>
+ </div>
+</div>
+
+
+ <% if @reviews.present? %>
+  <% reviews.each do |review| %>
+   <div class = "row reviews">
+    <div class = "reviews-user">
+     <%= link_to reviews.user do %>
+     <%= image_tag reviews.user.picture.url, width: '100px' %>
+     <% end %>
+     <p class = 'reviews-title'><%= link_to review.user.name, review.user %></p>
+     <p class = 'reviews-prof'><%= review.user.gender %><%= review.user.height %><%= review.user.weight %></p>
+    </div>
+    <div class = "reviews-contents">
+     <p><%= simple_time(review.created_at) %></p>
+     <h4>評価:<%= post.rate %>|<%= review.title %></h4>
+     <div id = "star-rate-<%= review.id %>"></div>
+      <script>
+       $('#star-rate-<%= review.id %>').raty({
+         size :36,
+         starOff: '<%= asset_path('star-off') %>',
+         starOn: '<%= asset_path('star-on') %>',
+         scoreName: 'review[rate]',
+         readOnly: true,
+       })
+      </script>
+      <div class = "edit-button">
+        <% if current_user == review.user %>
+         <%= link_to '口コミを編集', method: :get, class: 'btn btn-success' %>
+         <%= link_to '口コミを削除', method: :delete, class: 'btn btn-danger' %>
+        <% end %>
+      </div>
+    </div>
+   </div>
+  <% end %>
+ <% end %>
+<%= paginate @games %>

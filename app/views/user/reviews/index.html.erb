@@ -1,0 +1,57 @@
+<div class = "container">
+ <h2>評価とレビュー</h2>
+ <div class = "row">
+   <div class="evaluation-table">
+     <%= form_with model: @review, url: "/user/games/#{params[:game_id]}/reviews", local: true do |f| %>
+      <%= f.label :"タイトル:" %>
+      <%= f.text_field :title %>
+    <div class="form-group row" id="star">
+      <%= f.label :"評価:" %>
+      <%#= f.hidden_field :rate, name: "review[rate]" %>
+    </div>
+      <%# render 'user/review' %>
+      <%= f.label :"評価詳細:" %>
+      <%= f.text_area :introduction, placefolder: "評価詳細", class: "form-control" %>
+      <%= f.submit '投稿する' , class: 'btn btn-success' %>
+     <% end %>
+   </div>
+ </div>
+     <h2>レビュー一覧と詳細</h2>
+     <%#= render 'user/average' %>
+      <div class = "row">
+        <% @reviews.each do |review| %>
+         <div class = "text-left">
+          <p>投稿者：<%= review.user.name %></p>
+          <p><%= review.rate %></p>
+          <div>
+           <% if review.liked_by?(current_user) %>
+            <p><%= link_to user_game_review_likes_path(game_id: params[:game_id], review_id: review.id), method: :delete do %>
+                ♥<%= review.likes.count %> いいね
+              <% end %></p>
+            <% else %>
+            <p><%= link_to user_game_review_likes_path(game_id: params[:game_id], review_id: review.id), method: :post do %>
+               ♡<%= review.likes.count %> いいね
+             <% end %></p>
+           <% end %>
+          </div>
+         </div>
+         <div class = "text-right">
+          <p>コメント詳細：<%= review.introduction %></p>
+          <p></p>
+           <% if review.user == current_user %>
+            <%= link_to "コメント削除", user_game_reviews_path, method: :delete, class: "btn btn-danger" %>
+           <% end %>
+        <% end %>
+          </p>
+         </div>
+      </div>
+ </div>
+
+<script>
+  $("#star").raty({
+    size : 36,
+    starOff: '<%= asset_path('star-off') %>',
+    starOn: '<%= asset_path('star-on') %>',
+    scoreName: 'review[rate]',
+  });
+</script>

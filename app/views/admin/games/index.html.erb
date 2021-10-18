@@ -11,9 +11,9 @@
  <tbody>
     <tr>
    <% @games.each do |game| %>
-    <th><%= attachment_image_tag game,:image %></th>
-    <th><%= game.title %></th>
-    <th><%= link_to "詳細を見る", admin_game_path(game.id), class: 'btn btn-success' %></th>
+    <td><%= attachment_image_tag game,:image %></td>
+    <td><%= game.title %></td>
+    <td><%= link_to "詳細を見る", admin_game_path(game.id), class: 'btn btn-success' %></td>
    <% end %>
   </tr>
  </tbody>

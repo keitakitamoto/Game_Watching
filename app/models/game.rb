@@ -1,6 +1,7 @@
 class Game < ApplicationRecord
   #belongs_to :admin
   belongs_to :genre
+  has_many :reviews, dependent: :destroy
 
   attachment :image
 
