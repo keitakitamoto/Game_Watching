@@ -1,12 +1,12 @@
 <div class = "container">
-  <div class = "row justify-content-center">
+  <div class = "row justify-content-center mb-3">
     <h2>マイページ</h2>
   </div>
  <div class = "row justify-content-center col-8 offset-2">
    <div class = 'mypage col-xs-6'>
     <p><%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg", size: "200x200"  %></p>
    </div>
-   <table class = 'table table-bordered'>
+   <table class = 'table table-bordered mb-3'>
     <tr class = "brown-border">
       <td>ニックネーム:</td>
       <td><%= @user.name %></td>
@@ -19,21 +19,17 @@
       <td>いいね:</td>
       <td><%= @user.likes.count %></td>
     </tr>
-    <tr class = "brown-border">
+    <tr class = "brown-border ">
       <td>自己紹介:</td>
       <td><%= @user.introduction %></td>
     </tr>
    </table>
  </div>
-  <div class = "row justify-content-center">
-    <table class = "table">
-      <tr>
-       <% if user_signed_in? %>
-        <%= link_to "会員情報編集", edit_user_user_path(@user.id), class: 'btn btn-success' %>
-        <%= link_to "退会する", unsubscribe_user_users_path, class: 'btn btn-danger' %>
-       <% end %>
-      </tr>
-    </table>
+  <div class = "row justify-content-center mb-5">
+    <% if user_signed_in? %>
+     <%= link_to "会員情報編集", edit_user_user_path(@user.id), class: 'btn btn-success' %>
+     <%= link_to "退会する", unsubscribe_user_users_path, class: 'btn btn-danger' %>
+    <% end %>
   </div>
  </div>
 </div>

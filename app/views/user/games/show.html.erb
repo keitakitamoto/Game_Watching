@@ -1,25 +1,23 @@
 <div class = "container">
- <div class = "row">
+ <div class = "row justify-content-center">
    <h1>アプリ詳細</h1>
-    <div class = "table">
-     <tr>
-      <th><%= attachment_image_tag @game,:image %></th>
-      <th>ゲーム名：<%= @game.title %></th>
-      <th>ゲーム紹介：<%= @game.introduction %></th>
-      <th>詳細：<%= @game.body %></th>
-     </tr>
-      <div class = "game-contents">
-       <p><%= link_to 'このゲームのレビューを閲覧する', user_game_reviews_path(@game.id), class: 'btn btn-success' %></p>
-       <% if @game.liked_by?(current_user) %>
-        <p><%= link_to user_game_likes_path(game_id: @game.id), method: :delete do %>
-           ♥<%= @game.likes.count %> いいね
-           <% end %></p>
-        <% else %>
-        <p><%= link_to user_game_likes_path(game_id: @game.id), method: :post do %>
-          ♡<%= @game.likes.count %> いいね
-           <% end %></p>
-       <% end %>
-      </div>
   </div>
+  <div class = "row justify-content-center">
+   <div class = "game-image">
+    <%= attachment_image_tag @game,:image %>
+   <div class = "game-title">
+     <h4>ゲーム名: <%= @game.title %></h4>
+   </div>
+   <div class = "game-introduction">
+    <h4>ゲーム紹介:<%= @game.introduction %></h4>
+   </div>
+   <div class = "game-body">
+    <h4>詳細:<%= @game.body %></h4>
+   </div>
+   <div class = "game-reviews">
+    <h4><%= link_to 'このゲームのレビューを閲覧する', user_game_reviews_path(@game.id), class: 'btn btn-success' %></h4>
+   </div>
+     <li>いいね数：<%#= render "user/likes/like.game", game: @game %></li>
+ </div>
  </div>
 </div>

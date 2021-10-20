@@ -10,40 +10,55 @@
     <% end %>
   </div>
   <div class = "row">
-   <div class = 'new_appre_table'>
+   <div class = 'new_appre_table mb-3'>
     <h3><strong>新着アプリ</strong></h3>
      <p>おすすめの新作アプリをダウンロード！</p>
-    <table class = "table">
-      <tbody>
-       <tr>
-        <% @games.each do |game| %>
-          <th><%= attachment_image_tag game,:image, size:'100x100' %></th>
-          <th><%= link_to game.title, user_game_path(game.id) %></th>
-          <th><%= game.introduction %></th>
-        <% end %>
-       </tr>
-      </tbody>
-    </table>
-     <div class = "text_right">
-      <%= link_to ">>全て表示", user_games_path %>
-     </div>
-  <div class = 'ranking_table'>
-   <h3><strong>ランキング表示</strong></h3>
-   　<p>人気アプリをダウンロード！</p>
-  　<table class = "table col">
-     <tbody>
-   　  <tr>
-   　    <% @all_ranks.each do |game| %>
-   　   <th><%= attachment_image_tag game,:image, size:'100x100' %></th>
-   　   <th><%= link_to game.title, user_games_path(params[:id]) %></th>
-   　   <th><%= game.introduction %></th>
-   　    <% end %>
-   　  </tr>
-     </tbody>
-    </table>
+      <table class = "table">
+       <% @games.each do |game| %>
+         <div class = "game-photo">
+          <%= attachment_image_tag game,:image, size:'100x100' %>
+         </div>
+          <thead>
+            <tr>
+             <th><%= link_to game.title, user_game_path(game.id) %></th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr>
+              <th><%= game.introduction %></th>
+             </tr>
+       <% end %>
+          </tbody>
+          <div class = "text_right">
+            <%= link_to ">>全て表示", user_games_path %>
+           </div>
+      </table>
+    </div>
+  </div>
+     <div class = "row">
+      <div class = 'ranking_table'>
+       <h3><strong>ランキング表示</strong></h3>
+   　      <p>人気アプリをダウンロード！</p>
+  　        <table class = "table">
+             <tbody>
+           　  <tr>
+           　    <% @all_ranks.each do |game| %>
+           　   <td><%= attachment_image_tag game,:image, size:'100x100' %></td>
+           　  <tr class = "table-bordered">
+                <td><%= link_to game.title, user_games_path(params[:id]) %></td>
+           　  </tr>
+           　  <tr class = "table-bordered">
+             　 <td><%= game.introduction %></td>
+           　  </tr>
+           　    <% end %>
+           　  </tr>
+             </tbody>
+            </table>
          <div class = "text_right">
       <%= link_to ">>全て表示", user_games_path %>
+      </div>
      </div>
+
     <table class = 'game_genre_table'>
      <h3><strong>ジャンル別で見る</strong></h3>
       <p>ジャンルで探してみる

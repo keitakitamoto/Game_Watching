@@ -1,24 +1,28 @@
 <div class = "container">
-  <h1>掲示板一覧</h1>
-    <p>〜掲示板の作成は、会員の方なら自由に制作可能！ユーザー同士で交流を深めてゲームを盛り上げよう！〜</p>
   <div class = "row">
-      <ul>
-        <table class = "table table-border">
-          <% @topics.each do |topic| %>
-            <li><%= link_to topic.title, user_topics_show_path(topic.id) %>
-                <%= link_to '[削除]', user_topic_delete_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %>
-            </li>
-          <% end %>
-        </table>
-      </ul>
+    <div class = "topic-index">
+      <h1>掲示板一覧</h1>
+        <p>掲示板の作成は、会員の方なら自由に制作可能！ユーザー同士で交流を深めてゲームを盛り上げよう！</p>
+          <ul>
+            <table class = "table table-border">
+              <% @topics.each do |topic| %>
+                <li><h4><%= link_to topic.title, user_topics_show_path(topic.id) %></h4>
+                    <h4><%= link_to '[削除]', user_topic_delete_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %></h4>
+                </li>
+              <% end %>
+            </table>
+          </ul>
+    </div>
   </div>
-    <h1>掲示板新規登録</h1>
-      <p>〜作成したい「名前」をフォームに入力して「新規作成」を入力すれば掲示板制作可能！〜</p>
     <div class = "row">
-        <%= form_for @newTopic, :url => {:action => 'create'} do |f| %>
-          <%= f.text_field :title %>
-          <%= f.submit :新規作成 %>
-        <% end %>
+      <div class = "topic-new mb-3">
+        <h1>掲示板新規登録</h1>
+          <p>〜作成したい「名前」をフォームに入力して「新規作成」を入力すれば掲示板制作可能！〜</p>
+            <%= form_for @newTopic, :url => {:action => 'create'} do |f| %>
+              <%= f.text_field :title %>
+              <%= f.submit :新規作成 %>
+            <% end %>
+      </div>
     </div>
 </div>
 
