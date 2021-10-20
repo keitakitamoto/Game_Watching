@@ -27,6 +27,13 @@
  * version: 3.1.1
  *
  */
+$(function() {
+    $('.a').slick({
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 500,
+    });
+});
 
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {

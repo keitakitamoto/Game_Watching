@@ -1,19 +1,39 @@
-<h2>マイページ</h2>
-<table class = 'table'>
-  <thread>
-    <tbody>
-     <%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg", size: "200x200"  %>
-  　  <h5>ニックネーム:<%= @user.name %></h5>
-      <h5>お気に入りアプリ:<%= @user.title %></h5>
-      <h5>いいね:<%#= @user.post_count %></h5>
-      <h5>フォロワー:<%#= @user.follower %></h5>
-      <h5>自己紹介:<%= @user.introduction %></h5>
-    </tbody>
-  </thread>
-  <table class = "table">
-   <% if user_signed_in? %>
-    <%= link_to "会員情報編集", edit_user_user_path(@user.id), class: 'btn btn-success' %>
-    <%= link_to "退会する", unsubscribe_user_users_path, class: 'btn btn-danger' %>
-   <% end %>
-  </table>
+<div class = "container">
+  <div class = "row justify-content-center">
+    <h2>マイページ</h2>
+  </div>
+ <div class = "row justify-content-center col-8 offset-2">
+   <div class = 'mypage col-xs-6'>
+    <p><%= attachment_image_tag @user, :image, format: "jpeg", fallback: "no_image.jpg", size: "200x200"  %></p>
+   </div>
+   <table class = 'table table-bordered'>
+    <tr class = "brown-border">
+      <td>ニックネーム:</td>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr class = "brown-border">
+      <td>お気に入りアプリ:</td>
+      <td><%= @user.title %></td>
+    </tr>
+    <tr class = "brown-border">
+      <td>いいね:</td>
+      <td><%= @user.likes.count %></td>
+    </tr>
+    <tr class = "brown-border">
+      <td>自己紹介:</td>
+      <td><%= @user.introduction %></td>
+    </tr>
+   </table>
+ </div>
+  <div class = "row justify-content-center">
+    <table class = "table">
+      <tr>
+       <% if user_signed_in? %>
+        <%= link_to "会員情報編集", edit_user_user_path(@user.id), class: 'btn btn-success' %>
+        <%= link_to "退会する", unsubscribe_user_users_path, class: 'btn btn-danger' %>
+       <% end %>
+      </tr>
+    </table>
+  </div>
+ </div>
 </div>

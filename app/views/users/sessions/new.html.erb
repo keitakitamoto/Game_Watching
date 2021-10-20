@@ -2,11 +2,6 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="name-field">
-    <%= f.label :名前 %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "名前" %>
-  </div>
-
   <div class="field">
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "メールアドレス" %>
@@ -32,4 +27,4 @@
 <%= render "users/shared/links" %>
 
 <h2>まだ会員登録をしていない方</h2>
-<%= link_to "新規会員登録画面へ" , class: 'btn btn-success'%>
+<%= link_to "新規会員登録画面へ" , new_user_registration_path, class: 'btn btn-success'%>

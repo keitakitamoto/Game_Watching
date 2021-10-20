@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :user do
+    get 'search/Search'
+  end
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 #管理者側
   devise_for :admins , controllers: {
@@ -26,7 +29,7 @@ Rails.application.routes.draw do
 
   namespace :user do
     #get "users/unsubscribe" => "users#unsubscribe"
-    resources :users, only:[:show, :index, :edit, :update] do
+    resources :users, only:[:show, :edit, :update] do
       collection do
         get :unsubscribe
         patch :withdraw
@@ -41,8 +44,10 @@ Rails.application.routes.draw do
 	  delete 'topics/delete/:id' => 'topics#delete', as: :topic_delete
 	  #新規書き込みのルーティング
 	  post 'post/create' => 'post#create', as: :post_create
+	  get 'search' => "search/search"
 
     resources :games, only:[:show, :index] do
+      resource :likes, only:[:create, :destroy]
       resources :reviews, only:[:index, :create, :destroy] do
         resource :likes, only:[:create, :destroy]
       end

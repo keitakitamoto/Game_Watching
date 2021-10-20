@@ -1,31 +1,36 @@
-<h1>ゲーム詳細</h1>
-<table class = "table">
-  <thread>
-    <div class = "game-photo_image">
-      <tr>イメージ画像:</tr>
-      <tr><%= attachment_image_tag @game, :image, format: "jpeg", fallback: "no_image.jpg", size: "100x100" %></tr>
-    </div>
-    <div class = "game-title-table">
-      <tr>ゲームタイトル:</tr>
-      <tr><%= @game.title %></tr>
-    </div>
-    <div class = "genres-table">
-      <tr>ジャンル:</tr>
-      <tr><%= @game.genre.id %></tr> </div>
-    <div class = "PR-table">
-      <tr>簡潔PR:</tr>
-      <tr><%= @game.introduction %></tr>
-    </div>
-    <div class = "PR-table">
-      <tr>紹介文:</tr>
-      <tr><%= @game.body %></tr>
-    </div>
-    <div class = "bonus-table">
-      <tr>特典:</tr>
-      <tr><%= @game.introduction %></tr>
-    </div>
-    <div class = "center">
-      <%= link_to "編集する", edit_admin_game_path(@game.id) %>
-    </div>
-  </thread>
-</table>
+<div class = "container">
+  <h1>ゲーム詳細</h1>
+   <div class = "row">
+    <table class = "table">
+      <thread>
+        <div class = "game-photo_image">
+          <tr>イメージ画像:</tr>
+          <tr><%= attachment_image_tag @game, :image, format: "jpeg", fallback: "no_image.jpg", size: "100x100" %></tr>
+        </div>
+        <div class = "game-title-table">
+          <tr>ゲームタイトル:</tr>
+          <tr><%= @game.title %></tr>
+        </div>
+        <div class = "genres-table">
+          <tr>ジャンル:</tr>
+          <tr><%= @game.genre.name %></tr> </div>
+        <div class = "PR-table">
+          <tr>簡潔PR:</tr>
+          <tr><%= @game.introduction %></tr>
+        </div>
+        <div class = "PR-table">
+          <tr>紹介文:</tr>
+          <tr><%= @game.body %></tr>
+        </div>
+        <div class = "bonus-table">
+          <tr>特典:</tr>
+          <tr><%= @game.introduction %></tr>
+        </div>
+        <div class = "center">
+          <%= link_to "編集する", edit_admin_game_path(@game.id), class: "btn btn-primary" %>
+        </div>
+      </thread>
+     </table>
+   </div>
+</div>
+

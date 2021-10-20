@@ -1,39 +1,69 @@
-<h1>Game-Watching</h1>
-  <h3><%= link_to "ホーム",root_path %></h3>
-  <h3><%= link_to "ログイン",user_session_path %></h3>
-  <% if user_signed_in? %>
-    <h3>User</h3>
-      <%= link_to '[マイページ]', user_user_path(current_user) %>
-      <%= link_to '[logout]', destroy_user_session_path, method: :delete %>
-      <%= link_to '[掲示板機能]', user_topics_index_path %>
-  <% end %>
-  <% if admin_signed_in? %>
-    <h3>Admin</h3>
-      <%= link_to 'logout', destroy_admin_session_path, method: :delete %>
-  <% end %>
-  <div class = 'new_appre_table'>
-   <h3>新着アプリ</h3>
-    <div class = "new-appre">
-    <% @games.each do |game| %>
-     <p><%= attachment_image_tag game,:image %></p>
-     <p><%= link_to game.title, user_game_path(game.id) %></p>
+<div class="a">
+  <div class="b">1<img class="c" src="assets/sample1.jpg"></div>
+  <div class="b">2<img class="c" src="assets/sample2.jpg"></div>
+  <div class="b">3<img class="c" src="assets/sample3.jpg"></div>
+</div>
+<div class = "container">
+  <div class = "row">
+  　<% if user_signed_in? %>
+      <p><strong>★★★まず、はじめに「マイページ」より自分のプロフィールを作成しよう！★★★</strong></p>
     <% end %>
-    <%= link_to ">>全て表示", user_games_path %>
   </div>
-  <table class = 'ranking_table'>
-   <h3>ランキング表示</h3>
-    <%# @all_ranks.each do |game| %>
-      <%#= game.image_id %>
-      <%#= link_to game.title, user_games_path(params[:id]) %>
-    <%# end %>
+  <div class = "row">
+   <div class = 'new_appre_table'>
+    <h3><strong>新着アプリ</strong></h3>
+     <p>おすすめの新作アプリをダウンロード！</p>
+    <table class = "table">
+      <tbody>
+       <tr>
+        <% @games.each do |game| %>
+          <th><%= attachment_image_tag game,:image, size:'100x100' %></th>
+          <th><%= link_to game.title, user_game_path(game.id) %></th>
+          <th><%= game.introduction %></th>
+        <% end %>
+       </tr>
+      </tbody>
+    </table>
+     <div class = "text_right">
       <%= link_to ">>全て表示", user_games_path %>
-   </table>
-  <table class = 'game_genre_table'>
-   <h3>ジャンル別で見る</h3>
-    <%= link_to ">>全て表示", user_games_path %>
-  </table>
-  <div class = 'text_field center'>
-    <h4>無料会員登録でさまざまな特典をゲット！！</h4>
+     </div>
+  <div class = 'ranking_table'>
+   <h3><strong>ランキング表示</strong></h3>
+   　<p>人気アプリをダウンロード！</p>
+  　<table class = "table col">
+     <tbody>
+   　  <tr>
+   　    <% @all_ranks.each do |game| %>
+   　   <th><%= attachment_image_tag game,:image, size:'100x100' %></th>
+   　   <th><%= link_to game.title, user_games_path(params[:id]) %></th>
+   　   <th><%= game.introduction %></th>
+   　    <% end %>
+   　  </tr>
+     </tbody>
+    </table>
+         <div class = "text_right">
+      <%= link_to ">>全て表示", user_games_path %>
+     </div>
+    <table class = 'game_genre_table'>
+     <h3><strong>ジャンル別で見る</strong></h3>
+      <p>ジャンルで探してみる
+      <%#= form_with game_search_url, method: :get do %>
+        <%#= f.label :"ジャンル:" %>
+        <%#= f.collection_select :genre_id, @Genre.all, :id, :name, include_blank: "-- 選択してください --"  %>
+        <%#= f.submit '検索する', class: 'btn btn-primary' %>
+      <%# end %></p>
+      <%= link_to ">>全て表示", user_games_path %>
+    </table>
+    <div class = 'table col-6 offset-4'>
+      <p>無料会員登録でさまざまな特典をゲット！！</p>
+        <% if user_signed_in? %>
+          <%= link_to "掲示板一覧へ", user_topics_index_path, class: 'col-4 btn btn-success' %>
+         <% elsif %>
+          <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-success' %>
+          <%= link_to "ログイン", new_user_session_path, class: 'btn btn-primary' %>
+        <% end %>
+    </div>
+   </div>
   </div>
-    <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-success' %>
-    <%= link_to "ログイン", new_user_session_path, class: 'btn btn-primary' %>
+ </div>
+</div>

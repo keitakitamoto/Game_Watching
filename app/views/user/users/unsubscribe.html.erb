@@ -1,8 +1,13 @@
-<div class = "withdraw_page">
-<h2>本当に退会しますか？</h2>
-<h5>退会すると「掲示板機能」の使用<br>
-フォロワーやいいねの数が消えてしまいますが<br>
-本当に大丈夫ですか？</h5>
-<%= link_to "退会する", withdraw_user_users_path, method: :patch, class: 'btn btn-success' %>
-<%= link_to "退会しない", user_user_path(current_user), class: 'btn btn-danger' %>
+<div class = "container">
+  <h2>本当に退会しますか？</h2>
+  <div class = "row">
+    <h5>退会すると「掲示板機能」の使用<br>
+    フォロワーやいいねの数が消えてしまいますが<br>
+    本当に大丈夫ですか？</h5>
+  </div>
+    <div class = "row">
+      <p><%= link_to "退会する", withdraw_user_users_path, method: :patch, class: 'btn btn-success' %></p>
+      <p><%= link_to "退会しない", user_user_path(current_user), class: 'btn btn-danger' %></p>
+    </div>
+  </div>
 </div>

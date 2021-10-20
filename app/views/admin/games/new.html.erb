@@ -1,30 +1,35 @@
-<h1>ゲーム新規登録</h1>
-<%= form_with url:admin_games_path, model:@game, local:true do |f| %>
-<div class = "game-photo_image">
-  <%= f.label :'画像:' %>
-  <%= f.attachment_field :image %>
+<div class = "container">
+  <h1>ゲーム新規登録</h1>
+   <div class = "row">
+     <%= form_with url:admin_games_path, model:@game, local:true do |f| %>
+    <div class = "game-photo_image">
+      <%= f.label :'画像:' %>
+      <%= f.attachment_field :image %>
+    </div>
+    <div class = "game-title-table">
+      <%= f.label :'ゲームタイトル:' %>
+      <%= f.text_field :title, placeholder: 'タイトル' %>
+    </div>
+    <div class = "genres-table">
+      <%= f.label :'ジャンル:' %>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "-- 選択してください --"  %>
+    </div>
+    <div class = "PR-table">
+      <%= f.label :'ゲームについて:' %>
+      <%= f.text_field :introduction, placeholder: 'PR' %>
+    </div>
+    <div class = "PR-table">
+      <%= f.label :'紹介文:' %>
+      <%= f.text_area :body, placeholder: '紹介文' %>
+    </div>
+    <div class = "bonus-table">
+      <%= f.label :'特典:' %>
+      <%= f.text_area :bonus_index, placeholder: '特典' %>
+    </div>
+    <div class = "center">
+      <%= f.submit '投稿する', class: 'btn btn-success' %>
+      <p><%= link_to 'アプリゲーム一覧へ', admin_games_path, class: 'btn btn-primary' %></p>
+    </div>
+    <% end %>
+  </div>
 </div>
-<div class = "game-title-table">
-  <%= f.label :'ゲームタイトル:' %>
-  <%= f.text_field :title, placeholder: 'タイトル' %>
-</div>
-<div class = "genres-table">
-  <%= f.label :'ジャンル:' %>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "-- 選択してください --"  %>
-</div>
-<div class = "PR-table">
-  <%= f.label :'ゲームについて:' %>
-  <%= f.text_field :introduction, placeholder: 'PR' %>
-</div>
-<div class = "PR-table">
-  <%= f.label :'紹介文:' %>
-  <%= f.text_area :body, placeholder: '紹介文' %>
-</div>
-<div class = "bonus-table">
-  <%= f.label :'特典:' %>
-  <%= f.text_area :bonus_index, placeholder: '特典' %>
-</div>
-<div class = "center">
-  <%= f.submit '投稿する', class: 'btn btn-success' %>
-</div>
-<% end %>
