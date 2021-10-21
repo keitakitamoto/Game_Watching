@@ -17,6 +17,42 @@
  </div>
      <h2>レビュー一覧と詳細</h2>
      <%#= render 'user/average' %>
+
+     <% @reviews.each do |review| %>
+      <div class="row py-3" style="border-bottom: 1px solid #000;">
+       <div class="col-md-4">
+        投稿者：<%= review.user.name %>
+       </div>
+       <div class="col-md-4">
+        評価：
+        <div class = "star-average-score"></div>
+       </div>
+       <div class="col-md-4">
+        <% if review.liked_by?(current_user) %>
+         <p>
+          <%= link_to user_game_review_likes_path(game_id: params[:game_id], review_id: review.id), method: :delete do %>
+            ♥<%= review.likes.count %> いいね
+          <% end %>
+         </p>
+        <% else %>
+         <p>
+          <%= link_to user_game_review_likes_path(game_id: params[:game_id], review_id: review.id), method: :post do %>
+           ♡<%= review.likes.count %> いいね
+          <% end %>
+         </p>
+        <% end %>
+       </div>
+       <div class="col-md-12">
+        <p>
+         コメント詳細：<%= review.introduction %>
+        </p>
+        <% if review.user == current_user %>
+         <%= link_to "コメント削除", user_game_reviews_path, method: :delete, class: "btn btn-sm btn-danger" %>
+        <% end %>
+       </div>
+      </div>
+     <% end %>
+     <hr>
       <div class = "row col-12 justify-content-around">
         <% @reviews.each do |review| %>
          <table class = "table text-left col-4">

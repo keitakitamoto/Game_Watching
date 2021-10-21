@@ -3,21 +3,27 @@
    <h1>アプリ詳細</h1>
   </div>
   <div class = "row justify-content-center">
-   <div class = "game-image">
-    <%= attachment_image_tag @game,:image %>
+   <div class = "card">
+     <%= attachment_image_tag @game,:image %>
+    <div class = "card-body">
    <div class = "game-title">
      <h4>ゲーム名: <%= @game.title %></h4>
    </div>
    <div class = "game-introduction">
     <h4>ゲーム紹介:<%= @game.introduction %></h4>
    </div>
+   <div class = "game-likes">
+     <h4>いいね数：<%#= render "user/likes/like.game", game: @game %></h4>
+   </div>
+   <div class = "game-score">
+     <h4>評価：<%= @game.avg_score %></h4>
+   </div>
+    <div class = "game-reviews">
+    <h4><%= link_to 'このゲームのレビューを閲覧する', user_game_reviews_path(@game.id), class: 'btn btn-success' %></h4>
+   </div>
    <div class = "game-body">
     <h4>詳細:<%= @game.body %></h4>
    </div>
-   <div class = "game-reviews">
-    <h4><%= link_to 'このゲームのレビューを閲覧する', user_game_reviews_path(@game.id), class: 'btn btn-success' %></h4>
-   </div>
-     <li>いいね数：<%#= render "user/likes/like.game", game: @game %></li>
  </div>
  </div>
 </div>

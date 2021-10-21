@@ -1,7 +1,7 @@
 <div class="a">
-  <div class="b">1<img class="c" src="assets/sample1.jpg"></div>
-  <div class="b">2<img class="c" src="assets/sample2.jpg"></div>
-  <div class="b">3<img class="c" src="assets/sample3.jpg"></div>
+  <div class="b"><img class="img-fluid c" src="assets/sample1.jpg"></div>
+  <div class="b"><img class="img-fluid c" src="assets/sample2.jpg"></div>
+  <div class="b"><img class="img-fluid c" src="assets/sample3.jpg"></div>
 </div>
 <div class = "container">
   <div class = "row">
@@ -16,7 +16,7 @@
       <table class = "table">
        <% @games.each do |game| %>
          <div class = "game-photo">
-          <%= attachment_image_tag game,:image, size:'100x100' %>
+          <%= attachment_image_tag game,:image, class: 'img-fluid' %>
          </div>
           <thead>
             <tr>
