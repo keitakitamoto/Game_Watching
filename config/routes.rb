@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :user do
-    get 'search/Search'
-  end
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 #管理者側
   devise_for :admins , controllers: {
@@ -25,6 +22,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     #resources :post_comments, only:[:create, :destroy]
     # resources :users, only[:index, :show] #いいね機能
+    get 'about' => 'homes#about'
 
 
   namespace :user do
@@ -35,7 +33,6 @@ Rails.application.routes.draw do
         patch :withdraw
       end
     end
-    get 'about' => 'homes#about'
     #patch "users/withdraw" => "users#withdraw"
    #掲示板機能のルーティング
     get 'topics/index'
@@ -44,7 +41,7 @@ Rails.application.routes.draw do
 	  delete 'topics/delete/:id' => 'topics#delete', as: :topic_delete
 	  #新規書き込みのルーティング
 	  post 'post/create' => 'post#create', as: :post_create
-	  get 'search' => "search/search"
+	  get 'search' => "search#search"
 
     resources :games, only:[:show, :index] do
       resource :likes, only:[:create, :destroy]
@@ -53,5 +50,8 @@ Rails.application.routes.draw do
       end
       get 'download' => 'get#download'
     end
+    get   'inquiry'         => 'inquiry#index'     # 入力画面
+    post  'inquiry/confirm' => 'inquiry#confirm'   # 確認画面
+    post  'inquiry/thanks'  => 'inquiry#thanks'    # 送信完了画面
   end
 end

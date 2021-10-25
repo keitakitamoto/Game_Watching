@@ -1,21 +1,28 @@
 <div class = "container">
- <h1><%= @topic.title %></h1>
+ <div class="row">
+  <h1><%= @topic.title %></h1>
+ </div>
   <div class = "row">
    <% @posts.each_with_index do |post, idx| %>
-  <p><h4><%= idx + 1 %>. <%= current_user.name %></h4></p>
-   <div class="balloon1-left">
+   <div class="id-user-name col-md-6">
+    <p><h5><%= idx + 1 %>. <%= current_user.name %></h5></p>
+   </div>
+   <div class="balloon1-left col-md-6">
     <p><%= post.body %></p>
    </div>
-   <% end %>
+    <% end %>
+    <div class="row justify-content-center col-12">
+     <%= paginate(@posts) %>
+    </div>
   </div>
-  <div class = "row">
-   <div class = "new-topic justify-content-center">
+  <div class = "row col-12">
+   <div class = "new-topic col-md-8">
     <h3>新規書き込み</h3>
     <p>こちらに入力してそのまま投稿！</p>
    </div>
   </div>
- <div class = "row">
-   <div class = "topic-postform">
+ <div class = "row col-12">
+   <div class = "topic-postform col-md-8">
      <%= form_for @newpost, :url => user_post_create_path do |f| %>
       <p><h4>名前:<%= current_user.name %></h4></p>
       <p><h4>本文:</h4>
