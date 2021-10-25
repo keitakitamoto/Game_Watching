@@ -1,84 +1,98 @@
 <div class="a">
-  <div class="b"><img class="img-fluid c" src="assets/sample1.jpg"></div>
-  <div class="b"><img class="img-fluid c" src="assets/sample2.jpg"></div>
-  <div class="b"><img class="img-fluid c" src="assets/sample3.jpg"></div>
+  <div class="b"><img class="img-fluid c1"></div>
+  <div class="b"><img class="img-fluid c2"></div>
+  <div class="b"><img class="img-fluid c3"></div>
 </div>
 <div class = "container">
   <div class = "row">
   　<% if user_signed_in? %>
-      <p><strong>★★★まず、はじめに「マイページ」より自分のプロフィールを作成しよう！★★★</strong></p>
+  　 <div class="text-center">
+  　  <p><strong>★★★まず、はじめに「マイページ」より自分のプロフィールを作成しよう！★★★</strong></p>
+  　 </div>
     <% end %>
   </div>
-  <div class = "row">
-   <div class = 'new_appre_table mb-3'>
-    <h3><strong>新着アプリ</strong></h3>
+   <div class = 'row new_appre_table mb-3'>
+    <div class= 'col-12'>
+     <h3><strong>新着アプリ</strong></h3>
      <p>おすすめの新作アプリをダウンロード！</p>
-      <table class = "table">
+    </div>
        <% @games.each do |game| %>
-         <div class = "game-photo">
+       <div class = 'card col-md-4'>
+        <div class="card-img-top">
           <%= attachment_image_tag game,:image, class: 'img-fluid' %>
-         </div>
-          <thead>
-            <tr>
-             <th><%= link_to game.title, user_game_path(game.id) %></th>
-            </tr>
-          </thead>
-          <tbody>
-             <tr>
-              <th><%= game.introduction %></th>
-             </tr>
-       <% end %>
-          </tbody>
-          <div class = "text_right">
-            <%= link_to ">>全て表示", user_games_path %>
-           </div>
-      </table>
-    </div>
-  </div>
-     <div class = "row">
-      <div class = 'ranking_table'>
-       <h3><strong>ランキング表示</strong></h3>
-   　      <p>人気アプリをダウンロード！</p>
-  　        <table class = "table">
-             <tbody>
-           　  <tr>
-           　    <% @all_ranks.each do |game| %>
-           　   <td><%= attachment_image_tag game,:image, size:'100x100' %></td>
-           　  <tr class = "table-bordered">
-                <td><%= link_to game.title, user_games_path(params[:id]) %></td>
-           　  </tr>
-           　  <tr class = "table-bordered">
-             　 <td><%= game.introduction %></td>
-           　  </tr>
-           　    <% end %>
-           　  </tr>
-             </tbody>
-            </table>
-         <div class = "text_right">
-      <%= link_to ">>全て表示", user_games_path %>
+        </div>
+        <div class="card-body">
+         <h5 class="card-title">
+           <%= link_to game.title,user_games_path(params[:id]) %>
+         </h5>
+         <p class="card-text">
+           <%= game.introduction %>
+         </p>
+        </div>
       </div>
-     </div>
-
-    <table class = 'game_genre_table'>
-     <h3><strong>ジャンル別で見る</strong></h3>
-      <p>ジャンルで探してみる
-      <%#= form_with game_search_url, method: :get do %>
-        <%#= f.label :"ジャンル:" %>
-        <%#= f.collection_select :genre_id, @Genre.all, :id, :name, include_blank: "-- 選択してください --"  %>
-        <%#= f.submit '検索する', class: 'btn btn-primary' %>
-      <%# end %></p>
-      <%= link_to ">>全て表示", user_games_path %>
-    </table>
-    <div class = 'table col-6 offset-4'>
-      <p>無料会員登録でさまざまな特典をゲット！！</p>
-        <% if user_signed_in? %>
-          <%= link_to "掲示板一覧へ", user_topics_index_path, class: 'col-4 btn btn-success' %>
-         <% elsif %>
-          <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-success' %>
-          <%= link_to "ログイン", new_user_session_path, class: 'btn btn-primary' %>
-        <% end %>
-    </div>
+       <% end %>
+        <div class = "d-flex justify-content-end">
+          <%= link_to ">>全て表示", user_games_path %>
+        </div>
    </div>
-  </div>
+     <div class = "row">
+       <div class = 'ranking_table col-12'>
+        <h3><strong>ランキング表示</strong></h3>
+    　   <p>人気アプリをダウンロード！</p>
+    　  </div>
+           <% @all_ranks.each do |game| %>
+           <div class = 'card float:left col-md-2'>
+            <div class="card-img-top">
+              <%= attachment_image_tag game,:image, class: 'img-fluid' %>
+            </div>
+            <div class="card-body">
+             <h5 class="card-title">
+               <%= link_to game.title,user_games_path(params[:id]) %>
+             </h5>
+             <p class="card-text">
+               <%= game.introduction %>
+             </p>
+            </div>
+          </div>
+           <% end %>
+     </div>
+         <div class = "text_right">
+          <%= link_to ">>全て表示", user_games_path %>
+         </div>
+     <div class="row">
+       <h3><strong>ジャンル別やゲーム名で見る</strong></h3>
+     </div>
+       <div class="row mb-3 col-12">
+        <div class="name-search col-md-6">
+            <h4>ゲーム名で検索</h4>
+           <%= form_with url:user_search_path, method: :get, local: true do |f| %>
+             <%= f.text_field 'search[value]', size: "26x4" %><br>
+             <span class="search-button col-md-6 text-right">
+               <%= f.select 'search[how]', options_for_select({ "部分一致" => "partical", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "match" }) %>
+               <%= f.submit :"検索" %>
+             </span>
+           <% end %>
+        </div>
+        <div class="genre-search col-md-6">
+           <h4>ジャンル検索</h4>
+             <%#= form_with url :user_search_path, method: :get, local: true do |c| %>
+               <%#= c.label :genre_id %>
+               <%#= c.collection_select :genre_id, Genre.all, :id, :name, :prompt => "ジャンルを選択" %>
+               <%#= c.submit '検索する' %>
+             <%#end %>
+        </div>
+       </div>
+       <div class="row col-12">
+         <div class = 'row table justify-content-center col-md-8 offset-2'>
+          <p>無料会員登録でさまざまな特典をゲット！！</p>
+           <div class = "row col-md-6 offset-1">
+             <% if user_signed_in? %>
+              <%= link_to "掲示板一覧へ", user_topics_index_path, class: 'col-md-6 btn btn-success' %>
+             <% elsif %>
+              <%= link_to "新規登録", new_user_registration_path, class: 'col-md-3 btn btn-success' %>
+              <%= link_to "ログイン", new_user_session_path, class: 'col-md-3 btn btn-primary' %>
+             <% end %>         
+           </div>
+         </div>
+       </div>
  </div>
-</div>

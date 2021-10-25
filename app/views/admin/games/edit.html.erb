@@ -6,25 +6,25 @@
       <%= f.label :'画像:' %>
       <%= f.attachment_field :image %>
     </div>
-    <div class = "game-title-table">
+    <div class = "game-title-table mb-3">
       <%= f.label :'ゲームタイトル:' %>
-      <%= f.text_field :title, placeholder: 'タイトル' %>
+      <%= f.text_field :title, placeholder: 'タイトル', class: "form-control" %>
     </div>
-    <div class = "genres-table">
+    <div class = "genres-table mb-3">
       <%= f.label :'ジャンル:' %>
       <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "-- 選択してください --"  %>
     </div>
     <div class = "PR-table">
       <%= f.label :'簡潔PR:' %>
-      <%= f.text_area :introduction, placeholder: 'PR' %>
+      <%= f.text_area :introduction, placeholder: 'PR', class: "form-control" %>
     </div>
     <div class = "PR-table">
       <%= f.label :'紹介文:' %>
-      <%= f.text_area :body, placeholder: '紹介文' %>
+      <%= f.text_area :body, placeholder: '紹介文', class: "form-control", rows: "8" %>
     </div>
     <div class = "bonus-table">
       <%= f.label :'特典:' %>
-      <%= f.text_area :introduction, placeholder: '特典' %>
+      <%= f.text_area :introduction, placeholder: '特典', class: "form-control", rows: "8" %>
     </div>
     <div class = "center">
       <%= f.submit :更新する, class: 'btn btn-success' %>

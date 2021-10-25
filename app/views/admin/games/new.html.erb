@@ -8,7 +8,7 @@
     </div>
     <div class = "game-title-table">
       <%= f.label :'ゲームタイトル:' %>
-      <%= f.text_field :title, placeholder: 'タイトル' %>
+      <%= f.text_field :title, placeholder: 'タイトル', class: "form-control" %>
     </div>
     <div class = "genres-table">
       <%= f.label :'ジャンル:' %>
@@ -16,15 +16,15 @@
     </div>
     <div class = "PR-table">
       <%= f.label :'ゲームについて:' %>
-      <%= f.text_field :introduction, placeholder: 'PR' %>
+      <%= f.text_field :introduction, placeholder: 'PR', class: "form-control" %>
     </div>
     <div class = "PR-table">
       <%= f.label :'紹介文:' %>
-      <%= f.text_area :body, placeholder: '紹介文' %>
+      <%= f.text_area :body, placeholder: '紹介文', class: "form-control", rows: "8"%>
     </div>
     <div class = "bonus-table">
       <%= f.label :'特典:' %>
-      <%= f.text_area :bonus_index, placeholder: '特典' %>
+      <%= f.text_area :bonus_index, placeholder: '特典', class: "form-control", rows: "8" %>
     </div>
     <div class = "center">
       <%= f.submit '投稿する', class: 'btn btn-success' %>

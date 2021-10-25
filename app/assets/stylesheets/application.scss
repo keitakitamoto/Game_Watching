@@ -21,7 +21,20 @@
     min-height: 1000px;
 }
 
-.c{
+.c1{
+  background-image: (image-url('sample1.jpg'));
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+.c2{
+  background-image: (image-url('sample2.jpg'));
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+.c3{
+  background-image: (image-url('sample3.jpg'));
   height: 300px;
   width: 100%;
   object-fit: cover;

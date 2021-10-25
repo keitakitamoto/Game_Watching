@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="search-game">
+      <% if @datas.empty? %>
+        <h2>該当するゲームはありません</h2>
+      <% end %>
+        <div class ="text-center">
+          <h2>検索結果表示</h2>
+        </div>
+        <div class="row col-12">
+          <% @datas.each do |data| %>
+            <div class="card col-md-4">
+              <div class="card-image">
+                <%= link_to user_game_path(data.id) do %>
+                <%= attachment_image_tag data, :image, class: 'img-fluid' %><br>
+                <% end %>
+              </div>
+              <div class ="text-center">
+                <h4><%=  data.title %></h4><br>
+                <p><%= data.introduction %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
+</div>

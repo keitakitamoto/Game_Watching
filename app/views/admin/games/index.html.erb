@@ -1,26 +1,26 @@
 <div class = "container">
  <h1>アプリゲーム一覧</h1>
-  <div class = "row">
-   <table class = "table table-border">
-    <thread>
-     <tr>
-      <td>アプリイメージ画像</td>
-      <td>ゲームタイトル</td>
-      <td>詳細を見る</td>
-      <td><%= link_to "新しいゲームを投稿する", new_admin_game_path , class: 'btn btn-primary' %></td>
-     </tr>
-    </thread>
-    <tbody>
-       <tr>
-      <% @games.each do |game| %>
-       <td><%= attachment_image_tag game,:image, size: "100x100" %></td>
-       <td><%= game.title %></td>
-       <td><%= link_to "詳細を見る", admin_game_path(game.id), class: 'btn btn-success' %></td>
-      <% end %>
-     </tr>
-    </tbody>
-     <%= paginate @games %>
-   </table>
+  <div class ="new-game-edit">
+   <%= link_to "新しいゲームを投稿する", new_admin_game_path , class: 'btn btn-primary' %>
   </div>
+    <div class="row">
+      <%= @games.each do |game| %>
+      <div class = 'card col-md-4'>
+       <div class="card-img-top">
+        <%= attachment_image_tag game,:image, class: 'img-fluid' %>
+       </div>
+       <div class="card-body">
+        <h5 class="card-title">
+          <%= game.title %>
+        </h5>
+        <p class="card-text">
+          <%= game.introduction %>
+        </p>
+         <%= link_to "編集する", edit_admin_game_path(game.id), class: 'btn btn-success' %>
+       </div>
+      </div>
+     <% end %>
+    </div>
+ <%= paginate @games %>
 </div>
 
