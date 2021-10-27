@@ -42,16 +42,17 @@ Rails.application.routes.draw do
 	  #新規書き込みのルーティング
 	  post 'post/create' => 'post#create', as: :post_create
 	  get 'search' => "search#search"
+	  resources :inquiries, only:[:new, :create]
+    post  'inquiry/confirm', to: 'inquiries#confirm', as: 'confirm'   # 確認画面
+    post  'inquiry/back', to: 'inquiries#back', as: 'back' # 送信完了画面
+    get 'done', to: 'inquiries#done', as: 'done'
 
     resources :games, only:[:show, :index] do
       resource :likes, only:[:create, :destroy]
-      resources :reviews, only:[:index, :create, :destroy] do
-        resource :likes, only:[:create, :destroy]
-      end
+        resources :reviews, only:[:index, :create, :destroy] do
+          resource :likes, only:[:create, :destroy]
+        end
       get 'download' => 'get#download'
     end
-    get   'inquiry'         => 'inquiry#index'     # 入力画面
-    post  'inquiry/confirm' => 'inquiry#confirm'   # 確認画面
-    post  'inquiry/thanks'  => 'inquiry#thanks'    # 送信完了画面
   end
 end

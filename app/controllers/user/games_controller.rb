@@ -7,9 +7,6 @@ class User::GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    #@review = Review.average(:evaluation)
-    #@game_reviews = @game.game_reviews.order('created_at DESC').page(params[:page])
-    #counts(@game)
   end
 
   def counts(game)

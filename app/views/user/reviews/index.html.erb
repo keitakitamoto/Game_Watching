@@ -23,9 +23,8 @@
         投稿者：<%= review.user.name %>
        </div>
        <div class="col-md-4">
-        評価：
-        <div class = "star-average-score" id="star-rate">
-          <%= review.rate %>
+        <div class = "star-average-score" id="star-avg">
+         評価:<%#= game.avg_score %>
         </div>
        </div>
        <div class="col-md-4">
@@ -65,12 +64,3 @@
   });
 </script>
 
-<script>
-  $('#star-rate-<%= @review.id %>').raty({
-    size: 36,
-    starOff:  '<%= asset_path('star-off') %>',
-    starOn : '<%= asset_path('star-on') %>',
-    readOnly: true,
-    score: <%= @review.rate %>,
-  });
-</script>
