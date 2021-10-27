@@ -1,6 +1,6 @@
 class User::TopicsController < ApplicationController
   def index
-    @topics = Topic.all
+    @topics = Topic.page(params[:page]).per(10)
     @newTopic = Topic.new
   end
 

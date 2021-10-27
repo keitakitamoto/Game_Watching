@@ -11,6 +11,7 @@ class User::ReviewsController < ApplicationController
 
   def index
     @reviews = Review.all
+    @reviews = Review.page(params[:page]).per(10)
     @review = Review.new
   end
 

@@ -23,7 +23,7 @@
         </div>
         <div class="card-body">
          <h5 class="card-title">
-           <%= link_to game.title,user_games_path(params[:id]) %>
+           <%= link_to game.title, user_games_path(params[:id]) %>
          </h5>
          <p class="card-text">
            <%= game.introduction %>
@@ -75,23 +75,23 @@
         </div>
         <div class="genre-search col-md-6">
            <h4>ジャンル検索</h4>
-             <%#= form_with url :user_search_path, method: :get, local: true do |c| %>
-               <%#= c.label :genre_id %>
-               <%#= c.collection_select :genre_id, Genre.all, :id, :name, :prompt => "ジャンルを選択" %>
-               <%#= c.submit '検索する' %>
-             <%#end %>
+             <%= form_with url:user_search_path, method: :get, local: true do |c| %>
+               <%= c.label :genre_id %>
+               <%= c.collection_select :genre_id, Genre.all, :id, :name, :prompt => "ジャンルを選択" %>
+               <%= c.submit '検索する' %>
+             <% end %>
         </div>
        </div>
        <div class="row col-12">
          <div class = 'row table justify-content-center col-md-8 offset-2'>
           <p>無料会員登録でさまざまな特典をゲット！！</p>
-           <div class = "row col-md-6 offset-1">
+           <div class = "row col-md-8 offset-1">
              <% if user_signed_in? %>
-              <%= link_to "掲示板一覧へ", user_topics_index_path, class: 'col-md-6 btn btn-success' %>
+              <%= link_to "掲示板一覧へ", user_topics_index_path, class: 'col-md-8 btn btn-success' %>
              <% elsif %>
-              <%= link_to "新規登録", new_user_registration_path, class: 'col-md-3 btn btn-success' %>
-              <%= link_to "ログイン", new_user_session_path, class: 'col-md-3 btn btn-primary' %>
-             <% end %>         
+              <%= link_to "新規登録", new_user_registration_path, class: 'col-md-4 btn btn-success' %>
+              <%= link_to "ログイン", new_user_session_path, class: 'col-md-4 btn btn-primary' %>
+             <% end %>
            </div>
          </div>
        </div>

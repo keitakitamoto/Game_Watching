@@ -1,4 +1,5 @@
 class User::UsersController < ApplicationController
+
   def show
     @user = User.find(params[:id])
   end
@@ -21,9 +22,12 @@ class User::UsersController < ApplicationController
   end
 
   def withdraw
+    # current_user
+    # @user = User.find(params[:id])
     @user = User.find_by(name: params[:name])
-    @user.update(is_valid: false)
-    reset_session
+    @user.update(is_valid: true)
+    reset_session #ログアウトさせる
+    flash[:notice] = "ありがとうございました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
   end
 

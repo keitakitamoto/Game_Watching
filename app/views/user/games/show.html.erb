@@ -16,7 +16,20 @@
     <h4>ゲーム紹介:<%= @game.introduction %></h4>
    </div>
    <div class = "game-likes">
-     <h4>いいね数：<%#= render 'user/likes/like.game', game: @game %></h4>
+     <h4>いいね数
+     <div class = "game-contents">
+      <% if user_signed_in? %>
+       <% if @game.liked_by?(current_user) %>
+        <p><%= link_to user_game_likes_path(@game.id), method: :delete do %>
+           ♥<%= @game.likes.count %>
+           <% end %></p>
+          <% else %>
+        <p><%= link_to user_game_likes_path(@game.id), method: :post do %>
+            ♡<%= @game.likes.count %>
+           <% end %></p>
+       <% end %>
+      <% end %>
+      </div></h4>
    </div>
    <div class = "game-score" id='star_avg'>
      <h4>評価：<%= @game.avg_score %></h4>
@@ -27,7 +40,7 @@
     <h4><%= link_to '共有', class: 'btn btn-warning' %></h4>
    </div>
    <div class = "game-body">
-    <h4>詳細:<%= @game.body %></h4>git
+    <h4>詳細:<%= @game.body %></h4>
    </div>
  </div>
  </div>
