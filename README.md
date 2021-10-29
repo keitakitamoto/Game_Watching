@@ -1,24 +1,37 @@
-# README
+Game-Watching
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+スマホのアプリゲームの提供とユーザー間同士でのコミュニュケーションを行うツール
+会員登録することで、サイトで紹介している無料アプリから特典が付与された状態でスタートすることができる。
+.掲示板機能やいいね機能、フォロー機能を利用して同じゲームをしている仲間と交流を深めることができる場を設けたり、攻略方法を共有することができるサイト
 
-Things you may want to cover:
+### サイトテーマ
 
-* Ruby version
 
-* System dependencies
+### テーマを選んだ理由
+自身の興味があるものを題材にしました。他にも外出自粛要請で家に滞在する時間も増えることになったことで
+できることも限られてきます。そういった中でスマホは連絡手段や娯楽で使用されることになっていますので
+その娯楽の提供とコミュニケーションを家庭内でも養う事ができるツールとなっています。
+提供側にもユーザーの増加と提供しているアプリの活性化によって収益を上げる事ができるようになっています。
 
-* Configuration
 
-* Database creation
+### ターゲットユーザ
+10代から40代のスマホゲームが好きな方々へ
 
-* Database initialization
+### 主な利用シーン
+家庭や同じ趣味を共有できる友達を見つける
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/14YYmXNR9qVd4g-JC8SsP0T1U8CEg6AcQdQXENSR5pPI/edit#gid=0
 
-* Deployment instructions
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
