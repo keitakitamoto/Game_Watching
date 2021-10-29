@@ -3,7 +3,7 @@
    <h1>アプリ詳細</h1>
   </div>
   <div class = "row justify-content-center">
-   <div class = "card">
+   <div class = "card" style="width:30rem;">
      <%= attachment_image_tag @game,:image, class: 'img-fluid' %>
     <div class = "card-body">
    <div class = "game-title">
@@ -34,11 +34,13 @@
    <div class = "game-score" id='star_avg'>
      <h4>評価：<%= @game.avg_score %></h4>
    </div>
-    <div class = "game-reviews">
-    <h4><%= link_to 'このゲームのレビューを閲覧する', user_game_reviews_path(@game.id), class: 'btn btn-success' %></h4>
-    <h4><%= link_to 'ダウンロード', class: 'btn btn-primary' %></h4>
-    <h4><%= link_to '共有', class: 'btn btn-warning' %></h4>
-   </div>
+     <% if user_signed_in? %>
+      <div class = "game-reviews">
+        <h4><%= link_to 'このゲームのレビューを閲覧する', user_game_reviews_path(@game.id), class: 'btn btn-success' %></h4>
+        <h4><%= link_to 'ダウンロード', class: 'btn btn-primary' %></h4>
+        <h4><%= link_to '共有', class: 'btn btn-warning' %></h4>
+      </div>
+     <% end %>
    <div class = "game-body">
     <h4>詳細:<%= @game.body %></h4>
    </div>

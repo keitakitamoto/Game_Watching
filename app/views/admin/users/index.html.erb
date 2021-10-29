@@ -1,40 +1,33 @@
 <div class="container">
-  <div class="row col-12">
-    <h1>会員一覧</h1>
-  </div>
-    <div class="row col-12">
-      <div class = "users_index_table">
-        <table class = "table table-bordered">
-          <thead>
-            <tr>
-             <th>会員ID</th>
-             <th>名前</th>
-             <th>メールアドレス</th>
-             <th>ステータス</th>
-             <th>詳細情報</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-             <% @users.each do |user| %>
-              <td><%= user.id %></td>
-              <td><%= user.name %></td>
-              <td><%= user.email %></td>
-              <td>
-                <% if user.is_valid? %>
-               <span class="text-secondary font-weight-bold">退会</span>
+  <h1>会員一覧</h1>
+    <div class="row">
+      <table class = "table">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>名前</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+            <th>詳細情報</th>          
+          </tr>
+        </thead>
+      <% @users.each do |user| %>
+        <tbody>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td>
+              <% if user.is_valid? %>
+                <span class="text-secondary font-weight-bold">退会</span>
                 <% else %>
-               <span class="text-success font-weight-bold">有効</span>
-                <% end %>
-              </td>
-              <td><%= link_to "詳細を見る",admin_user_path(user), class: 'btn btn-success' %></td>
-             <% end %>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <%= paginate @users %>
+                <span class="text-success font-weight-bold">有効</span>
+              <% end %>
+            </td>
+            <td><%= link_to "詳細を見る", admin_user_path(user), class: 'btn btn-success' %></td>
+       <% end %>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  </div>
 </div>
-

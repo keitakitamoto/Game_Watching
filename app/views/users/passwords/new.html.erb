@@ -1,17 +1,26 @@
-<h2>パスワードを忘れてしまった方</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "メールアドレス" %>
+<div class="container">
+  <div class="row">
+   <h2>パスワードを忘れてしまった方</h2>
   </div>
-
-  <div class="actions">
-    <%= f.submit "リセットパスワードを送る" %>
+  <div class="row">
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "users/shared/error_messages", resource: resource %>
+        <div class="field">
+          <%= f.label :メールアドレス %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "メールアドレス" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "リセットパスワードを送る" %>
+        </div>
+      <% end %>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
-<%= link_to "戻る", :back, class: 'btn btn-danger' %>
+      <div class="row col-12">
+        <div class="actions col-md-6">
+          <%= render "users/shared/links" %>
+        </div>
+        <div class="back col-md-6">
+          <%= link_to "戻る", new_user_session_path, class: 'btn btn-danger' %>
+        </div>
+        </div>
+      </div>
+</div>

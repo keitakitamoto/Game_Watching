@@ -3,31 +3,29 @@
     <h1><%= @user.name %>さんの会員情報</h1>
   </div>
     <div class="row">
-      <div class = "user_information" >
-        <table class = "table table-bordered">
-          <thead>
-            <tbody>
-              <tr>
-               <th>会員ID:</th>
-               <th>名前:</th>
-               <th>メールアドレス:</th>
-               <th>ステータス:</th>
-              </tr>
-              <tr>
-               <td><%= @user.id %></td>
-               <td><%= @user.name %></td>
-               <td><%= @user.email %></td>
-               <td>
-                <% if @user.is_valid? %>
-                 <span class="text-secondary font-weight-bold">退会</span>
-                <% else %>
-                 <span class="text-success font-weight-bold">有効</span>
-                <% end %>
-               </td>
-              </tr>
-            </tbody>
-          </thead>
-        </table>
-      </div>
+     <table class = "table table-bordered">
+      <thead>
+        <tr>
+          <th>会員ID:</th>
+          <th>名前:</th>
+          <th>メールアドレス:</th>
+          <th>ステータス:</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @user.id %></td>
+          <td><%= @user.name %></td>
+          <td><%= @user.email %></td>
+          <td>
+            <% if @user.is_valid? %>
+              <span class="text-secondary font-weight-bold">退会</span>
+              <% else %>
+              <span class="text-success font-weight-bold">有効</span>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     </div>
 </div>
