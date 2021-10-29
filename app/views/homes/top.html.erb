@@ -47,7 +47,7 @@
             </div>
             <div class="card-body">
              <p class="card-title">
-               <%= link_to game.title, user_games_path(params[:id]) %>
+               <%= link_to game.title, user_game_path(game) %>
              <p>
              <p class="card-text">
                <%= game.introduction %>
