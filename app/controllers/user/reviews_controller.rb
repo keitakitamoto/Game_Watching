@@ -10,9 +10,10 @@ class User::ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
-    @reviews = Review.page(params[:page]).per(10)
-    @review = Review.new
+    @game = Game.find(params[:game_id])#rails routesで確認
+    @reviews = @game.reviews   #all(@game.id) #親とこの関係
+    @reviews = @game.reviews.page(params[:page]).per(10)
+    @review = Review.new #からのものを作る際は特定のカラムは必要ない
   end
 
   def destroy

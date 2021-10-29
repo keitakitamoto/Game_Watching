@@ -8,8 +8,9 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_reviews, through: :likes, source: :post
-  
+  has_many :topics, dependent: :destroy
+
   attachment :image
-  
+
 end
 

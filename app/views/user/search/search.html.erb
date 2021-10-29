@@ -1,6 +1,5 @@
 <div class="container">
-  <div class="row col-12">
-    <div class="search-game">
+  <div class="row">
       <% if @datas.empty? %>
         <h2>該当するゲームはありません</h2>
       <% end %>
@@ -9,19 +8,20 @@
         </div>
         <div class="row col-12">
           <% @datas.each do |data| %>
-            <div class="card col-md-4">
-              <div class="card-image">
+            <div class="col-md-6">
+              <div class="image">
                 <%= link_to user_game_path(data.id) do %>
-                <%= attachment_image_tag data, :image, class: 'img-fluid' %><br>
+                  <%= attachment_image_tag data, :image, size:"200x200" %><br>
                 <% end %>
               </div>
-              <div class ="text-center">
-                <h4><%=  data.title %></h4><br>
+              <div class ="title">
+                <h4><%=  data.title %></h4>
+              </div>
+              <div class="introduction">
                 <p><%= data.introduction %></p>
               </div>
             </div>
           <% end %>
         </div>
-    </div>
   </div>
 </div>

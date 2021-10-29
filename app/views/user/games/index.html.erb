@@ -4,19 +4,18 @@
  </div>
  <div class ="row">
    <% @games.each do |game| %>
-   <div class = 'card col-md-4'>
-    <div class="card-img-top">
-      <%= attachment_image_tag game,:image, class: 'img-fluid' %>
+   <div class = 'col-6'>
+    <div class="d-flex">
+      <div class="game-image">
+        <%= attachment_image_tag game,:image, class: 'img-fluid' %>
+      </div>
     </div>
-    <div class="card-body">
-     <h5 class="card-title">
-       <%= game.title %>
-     </h5>
-     <p class="card-text">
+      <div class="game-title">
+         <%= link_to game.title, user_game_path(game.id) %>
+      </div>      
+     <div class="game-introduction">
        <%= game.introduction %>
-     </p>
-      <%= link_to "開く", user_game_path(game.id), class: 'btn btn-success' %>
-    </div>
+     </div>
    </div>
    <% end %>
     <%= paginate @games %>

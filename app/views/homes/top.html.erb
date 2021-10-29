@@ -19,11 +19,11 @@
        <% @games.each do |game| %>
        <div class = 'card col-md-4'>
         <div class="card-img-top">
-          <%= attachment_image_tag game,:image, class: 'img-fluid' %>
+          <%= attachment_image_tag game,:image, size:"250x250" %>
         </div>
         <div class="card-body">
          <h5 class="card-title">
-           <%= link_to game.title, user_games_path(params[:id]) %>
+           <%= link_to game.title, user_game_path(game) %>
          </h5>
          <p class="card-text">
            <%= game.introduction %>
@@ -41,14 +41,14 @@
     　   <p>人気アプリをダウンロード！</p>
     　  </div>
            <% @all_ranks.each do |game| %>
-           <div class = 'card float:left col-md-2'>
+           <div class = 'card col-md-2'>
             <div class="card-img-top">
-              <%= attachment_image_tag game,:image, class: 'img-fluid' %>
+              <%= attachment_image_tag game,:image, size: "120x120" %>
             </div>
             <div class="card-body">
-             <h5 class="card-title">
-               <%= link_to game.title,user_games_path(params[:id]) %>
-             </h5>
+             <p class="card-title">
+               <%= link_to game.title, user_games_path(params[:id]) %>
+             <p>
              <p class="card-text">
                <%= game.introduction %>
              </p>

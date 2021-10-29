@@ -1,5 +1,15 @@
 <div class = "container">
  <h2>評価とレビュー</h2>
+ <% if @review.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <strong>入力内容にエラーがあります</strong>
+    <ul>
+     <% @review.errors.each do |attr, msg| %>
+      <li><%= msg %></li>
+     <% end %>
+    </ul>
+  </div>
+ <% end %>
  <div class = "form-group row justify-content-center">
    <div class="evaluation-table col-8">
      <%= form_with model: @review, url: "/user/games/#{params[:game_id]}/reviews", local: true do |f| %>
@@ -8,7 +18,6 @@
     <div class="form-group row col-8" id="star">
       <%= f.label :"評価:" %>
     </div>
-      <%# render 'user/review' %>
       <%= f.label :"評価詳細:" %>
       <%= f.text_area :introduction, placeholder: "評価詳細", class: "form-control", rows: "8" %>
       <%= f.submit '投稿する' , class: 'btn btn-success' %>
@@ -19,35 +28,20 @@
      <%#= render 'user/average' %>
      <% @reviews.each do |review| %>
       <div class="row py-3" style="border-bottom: 1px solid #000;">
-       <div class="col-md-4">
+       <div class="col-md-6">
         投稿者：<%= review.user.name %>
        </div>
-       <div class="col-md-4">
-        <div class = "star-average-score" id="star-avg">
-         評価:<%#= game.avg_score %>
+       <div class="col-md-6">
+        <div class = "star-average-score" id='star_show-<%= review.id %>'>
+         評価:<%= review.rate %>
         </div>
-       </div>
-       <div class="col-md-4">
-        <% if review.liked_by?(current_user) %>
-         <p>
-          <%= link_to user_game_review_likes_path(game_id: params[:game_id], review_id: review.id), method: :delete do %>
-            ♥<%= review.likes.count %> いいね
-          <% end %>
-         </p>
-        <% else %>
-         <p>
-          <%= link_to user_game_review_likes_path(game_id: params[:game_id], review_id: review.id), method: :post do %>
-           ♡<%= review.likes.count %> いいね
-          <% end %>
-         </p>
-        <% end %>
        </div>
        <div class="col-md-12">
         <p>
          コメント詳細：<%= review.introduction %>
         </p>
         <% if review.user == current_user %>
-         <%= link_to "コメント削除", user_game_reviews_path, method: :delete, class: "btn btn-sm btn-danger" %>
+         <%#= link_to "コメント削除", user_game_review_path(game.id, review.id), method: :delete, class: "btn btn-sm btn-danger" %>
         <% end %>
        </div>
       </div>
@@ -64,3 +58,12 @@
   });
 </script>
 
+<script>
+  $("#star_show-<%= @review.id %>").raty({
+    size : 36,
+    starOff: '<%= asset_path('star-off') %>',
+    starOn: '<%= asset_path('star-on') %>',
+    readOnly: true,
+    scoreName: <%= @review.rate %>,
+  });
+</script>
