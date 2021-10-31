@@ -1,9 +1,0 @@
- <script>
-    $("#star").raty({
-      size :36,
-      starOff: '<%= asset_path('star-off') %>',
-      starOn: '<%= asset_path('star-on') %>',
-      readOnly: true,
-      score: "#{game.reviews.average(:rate).to_f.round(1)}",
-    });
-  </script>

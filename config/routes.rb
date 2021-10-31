@@ -6,7 +6,7 @@ Rails.application.routes.draw do
      passwords: 'admins/passwords',
      registrations: 'admins/registrations'
   }
-
+  root to: 'homes#top'
   namespace :admin do
     resources :games
     resources :genres, only: [:index, :create, :edit, :update, :destroy]

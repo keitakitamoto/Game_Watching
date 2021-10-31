@@ -1,0 +1,13 @@
+     <div class = "game-contents">
+      <% if user_signed_in? %>
+       <% if game.liked_by?(current_user) %>
+        <p><%= link_to user_game_likes_path(game), method: :delete, remote: true do %>
+           ♥<%= game.likes.count %>
+           <% end %></p>
+          <% else %>
+        <p><%= link_to user_game_likes_path(game), method: :post, remote: true do %>
+            ♡<%= game.likes.count %>
+           <% end %></p>
+          <% end %>
+      </div>
+      <% end %>

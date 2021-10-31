@@ -7,7 +7,9 @@
             <table class = "table table-border">
               <% @topics.each do |topic| %>
                 <li><h4><%= link_to topic.title, user_topics_show_path(topic.id) %></h4>
+                  <% if topic.user == current_user %>
                     <h4><%= link_to '[削除]', user_topic_delete_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %></h4>
+                  <% end %>
                 </li>
               <% end %>
             </table>

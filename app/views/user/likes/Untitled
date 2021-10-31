@@ -1,2 +1,2 @@
 $("#like_btn_<%= @game.id %>").html("<%= escape_javascript(render partial: 'likes/like-btn', locals: {game: @game}) %>");
-$("#like_btn_<%= @game.id %>").html("<%= j(render 'likes/like-btn', game: @game) %>");
+$("#like_btn_<%= @game.id %>").html("<%= escape_javascript(render partial: 'likes/like-btn', locals: {game: @game}) %>");
