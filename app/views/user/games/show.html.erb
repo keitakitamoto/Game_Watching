@@ -16,7 +16,7 @@
     <h4>ゲーム紹介:<%= @game.introduction %></h4>
    </div>
    <div id = "like_btn_<%= @game.id %>">
-     <h4>いいね数:
+     <h4>
       <%= render "user/likes/like-btn", game: @game %>
       <!--非同期通信-->
      </h4>
