@@ -4,15 +4,18 @@
       <h1>掲示板一覧</h1>
         <p>掲示板の作成は、会員の方なら自由に制作可能！ユーザー同士で交流を深めてゲームを盛り上げよう！</p>
           <ul>
-            <table class = "table table-border">
+            <!--table class = "table table-border"-->
               <% @topics.each do |topic| %>
                 <li><h4><%= link_to topic.title, user_topics_show_path(topic.id) %></h4>
-                  <% if topic.user == current_user %>
+                  <% if topic.user_id == current_user.id %>
                     <h4><%= link_to '[削除]', user_topic_delete_path(topic.id), method: :delete, data: {confirm: "削除してもよろしいですか？"} %></h4>
+                  <% end %>
+                  <% unless topic.user.nil? %>
+                    <h5><%= topic.user.name.blank? ? 'NO NAME' : topic.user.name %></h5>
                   <% end %>
                 </li>
               <% end %>
-            </table>
+            <!--/table-->
           </ul>
           <div class ="text-center">
             <%= paginate @topics %>

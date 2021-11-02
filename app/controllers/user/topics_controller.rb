@@ -12,7 +12,7 @@ class User::TopicsController < ApplicationController
 
   def create
     #ストロングパラメーターを追加したい
-    @topic = Topic.new(params[:topic].permit(:title))
+    @topic = Topic.new(params[:topic].permit(:title).merge(user_id: current_user.id))
     @topic.save
     redirect_to user_topics_index_path
   end

@@ -37,9 +37,8 @@
         </div>
        </div>
        <div class="col-md-12">
-        <p>
-         コメント詳細：<%= review.introduction %>
-        </p>
+        <p>コメント詳細：<%= review.introduction %></p>
+        <p class="sentiment-score">本文の感情分析スコア[<%= review.score %>点]</p>
         <% if review.user == current_user %>
          <%#= link_to "コメント削除", user_game_review_path(game.id, review.id), method: :delete, class: "btn btn-sm btn-danger" %>
         <% end %>

@@ -5,6 +5,7 @@ class User::ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.game_id = params[:game_id].to_i
+    @review.score = Language.get_data(review_params[:introduction]) #自然言語処理
     @review.save
     redirect_to user_game_reviews_path
   end
