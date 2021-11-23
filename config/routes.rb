@@ -42,10 +42,14 @@ Rails.application.routes.draw do
 	  #新規書き込みのルーティング
 	  post 'post/create' => 'post#create', as: :post_create
 	  get 'search' => "search#search"
-	  resources :inquiries, only:[:new, :create]
-    post  'inquiry/confirm', to: 'inquiries#confirm', as: 'confirm'   # 確認画面
-    post  'inquiry/back', to: 'inquiries#back', as: 'back' # 送信完了画面
-    get 'done', to: 'inquiries#done', as: 'done'
+    ##### 問い合わせフォーム
+    get 'inquiries' => 'inquiries#index' 
+    get 'inquiries/confirm' => redirect("/inquiries")
+    get 'inquiries/thanks' => redirect("/inquiries")
+    ##### 問い合わせ確認画面
+    post 'inquiries/confirm' => 'inquiries#confirm'
+    ##### 問い合わせ完了画面
+    post 'inquiries/thanks' => 'inquiries#thanks'
 
     resources :games, only:[:show, :index] do
       resource :likes, only:[:create, :destroy]

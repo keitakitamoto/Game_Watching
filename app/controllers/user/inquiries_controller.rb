@@ -1,5 +1,5 @@
 class User::InquiriesController < ApplicationController
-  def new
+  def index
     # 入力画面を表示
     @inquiry = Inquiry.new
   end
@@ -17,6 +17,7 @@ class User::InquiriesController < ApplicationController
     @inquiry = Inquiry.new(inquiry_params)
     render :new
   end
+  
   # 実際に送信するアクションになります。
   # ここで初めて入力内容を保存します。
   # セキュリティーのためにも一定時間で入力内容の削除を行ってもいいかもしれません。
@@ -24,13 +25,10 @@ class User::InquiriesController < ApplicationController
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
       InquiryMailer.send_mail(@inquiry).deliver_now
-      redirect_to done_path
+      redirect_to user_inquiry_thanks_path
     else
       render :new
     end
-  end
-
-  def done
   end
 
   private

@@ -11,16 +11,8 @@
         </div>
         <div class="actions">
           <%= f.submit "リセットパスワードを送る" %>
+          <%= link_to "戻る", new_user_session_path, class: 'btn btn-danger' %>
         </div>
       <% end %>
   </div>
-      <div class="row col-12">
-        <div class="actions col-md-6">
-          <%= render "users/shared/links" %>
-        </div>
-        <div class="back col-md-6">
-          <%= link_to "戻る", new_user_session_path, class: 'btn btn-danger' %>
-        </div>
-        </div>
-      </div>
 </div>

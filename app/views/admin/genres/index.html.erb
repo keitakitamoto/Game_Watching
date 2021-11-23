@@ -15,7 +15,7 @@
         <tr>
           <%= f.label :"ジャンル名:" %>
           <th><%= f.text_field :name, autofocus: true,placeholder: 'ジャンル名' %></th>
-          <th><%= f.submit 'ジャンル新規登録', class: 'btn btn-success' %></th>
+          <th><%= f.submit 'ジャンル追加', class: 'btn btn-success' %></th>
           <th><%= link_to 'ゲーム新規登録', new_admin_game_path, class: 'btn btn-primary' %></th>
         </tr>
         <% end %>
