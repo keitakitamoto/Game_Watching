@@ -43,13 +43,12 @@ Rails.application.routes.draw do
 	  post 'post/create' => 'post#create', as: :post_create
 	  get 'search' => "search#search"
     ##### 問い合わせフォーム
-    get 'inquiries' => 'inquiries#index' 
-    get 'inquiries/confirm' => redirect("/inquiries")
-    get 'inquiries/thanks' => redirect("/inquiries")
+    get 'inquiries' => 'inquiries#new'
+    post 'inquiries/thanks' => 'inquiries#create'
     ##### 問い合わせ確認画面
     post 'inquiries/confirm' => 'inquiries#confirm'
     ##### 問い合わせ完了画面
-    post 'inquiries/thanks' => 'inquiries#thanks'
+    get 'inquiries/thanks' => 'inquiries#thanks'
 
     resources :games, only:[:show, :index] do
       resource :likes, only:[:create, :destroy]

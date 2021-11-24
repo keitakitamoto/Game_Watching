@@ -1,8 +1,6 @@
 class InquiryMailer < ApplicationMailer
-  default from: "example@example.com"   # 送信元アドレス
-
-  def received_email(inquiry)
+  def contact_mail(inquiry)
     @inquiry = inquiry
-    mail to: ENV['TOMAIL'], subject: '【お問い合わせ】'+ @inquiry.subject_i18n
+    mail(to: @inquiry.email, subject: "Test from Rails")
   end
 end

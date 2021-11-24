@@ -21,7 +21,7 @@
       </table>
      </div>
       <div class="row">
-        <%= form_for @inquiry, url: user_inquiries_thanks_path, method: :post do |f| %>
+        <%= form_for @inquiry, url: user_inquiries_thanks_path do |f| %>
           <%= f.hidden_field :name %>
           <%= f.hidden_field :email %>
           <%= f.hidden_field :message %>
